@@ -47,9 +47,7 @@ class _SignInState extends State<SignIn> {
                             buildTextField(
                                 "Enter your email address", "email", "user",
                                 (value) {
-                              context
-                                  .read<SignInBlocs>()
-                                  .add(EmailEvent(value));
+                              context.read<SignInBlocs>().add(EmailEvent(value));
                             }),
                             reUsableText("Password"),
                             SizedBox(
@@ -67,8 +65,7 @@ class _SignInState extends State<SignIn> {
                               height: 70.h,
                             ),
                             buildLoginAndRegButton("Log In", "login", () {
-                              SignInController(context: context)
-                                  .handleSignIn("email");
+                              SignInController(context: context).handleSignIn("email");
                             }),
                             buildLoginAndRegButton("Sign Up", "Sign Up", () {
                               Navigator.of(context).pushNamed("/register");

@@ -8,24 +8,34 @@ import '../../common/entities/user.dart';
 import '../../global.dart';
 
 class HomeController {
-  final BuildContext context;
+  late  BuildContext context;
 
-  HomeController({required this.context});
+  UserItem? get userProfile => Global.storageService.getUserProfile();
 
-  UserItem? userProfile = Global.storageService.getUserProfile();
+  static final HomeController _singleTon = HomeController._internal();
+
+  HomeController._internal();
+
+  //this is factory contstructor
+  // the factory con make sure you have original only one instance
+  factory HomeController({required BuildContext context}) {
+    _singleTon.context = context;
+    return _singleTon;
+  }
 
   Future<void> init() async {
     //make sure user has loged in application
-    if(Global.storageService.getUserToken().isNotEmpty){
+    if (Global.storageService.getUserToken().isNotEmpty) {
       var result = await CourseApi.courseList();
-      if (result.status!=null) {
-        if(context.mounted){
+      print('the result is ${result.data![0].description}');
+      if (result.status != null) {
+        if (context.mounted) {
           context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
         }
       } else {
         print(result.status);
       }
-    }else{
+    } else {
       print("User has already loggedout");
     }
   }

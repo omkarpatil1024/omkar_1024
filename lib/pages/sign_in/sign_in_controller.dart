@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:ulearning/common/entities/entities.dart';
 import 'package:ulearning/common/values/constant.dart';
 import 'package:ulearning/common/widgets/flutter_toast.dart';
+import 'package:ulearning/pages/home/home_controller.dart';
 import 'package:ulearning/pages/sign_in/bloc/login_blocs.dart';
 
 import '../../common/apis/user_api.dart';
@@ -70,7 +71,10 @@ class SignInController {
             // type 1 means email login
             loginRequestEntity.type = 1;
             print("photo url is ${photoUrl}");
-            asyncPostAllData(loginRequestEntity);
+            await asyncPostAllData(loginRequestEntity);
+            if(context.mounted){
+              await HomeController(context: context).init();
+            }
             print("user exist");
             // Global.storageService
             //     .setString(AppConstant.STORAGE_USER_TOKEN_KEY, "logedIn");

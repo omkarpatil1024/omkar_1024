@@ -38,7 +38,7 @@ Widget reUsableText(String text) {
       ));
 }
 
-Widget buildTextField(String hintText, String text, String iconName,
+Widget  buildTextField(String hintText, String text, String iconName,
     void Function(String value)? func) {
   return Container(
       margin: EdgeInsets.only(bottom: 20.h),

@@ -38,12 +38,9 @@ class RegisterController {
       if (user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(userName);
-        String photoUrl =
-            "https://cdn-icons-png.flaticon.com/512/2342/2342004.png";
+        String photoUrl = "https://cdn-icons-png.flaticon.com/512/2342/2342004.png";
         await credential.user?.updatePhotoURL(photoUrl);
-        toastInfo(
-            msg:
-                "An email has been sent to your registered email. To activate is please check your email box and click on the link");
+        toastInfo(msg: "An email has been sent to your registered email. To activate is please check your email box and click on the link");
         Navigator.of(context).pop();
       }
     } on FirebaseAuthException catch (e) {

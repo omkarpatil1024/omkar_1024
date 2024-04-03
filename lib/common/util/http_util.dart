@@ -21,10 +21,7 @@ class HttpUtil {
     dio = Dio(options);
   }
 
-  Future post(String path,
-      {dynamic data,
-      Map<String, dynamic>? queryParameters,
-      Options? options}) async {
+  Future post(String path, {dynamic data, Map<String, dynamic>? queryParameters, Options? options}) async {
     Options requestOptions = options ?? Options();
     requestOptions.headers = requestOptions.headers ?? {};
     Map<String, dynamic>? authorization = getAuthorizationHeader();

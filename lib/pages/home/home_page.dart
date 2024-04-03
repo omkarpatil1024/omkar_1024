@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning/common/entities/entities.dart';
 import 'package:ulearning/common/routes/names.dart';
 import 'package:ulearning/common/values/colors.dart';
 import 'package:ulearning/pages/home/bloc/home_page_blocs.dart';
@@ -17,24 +18,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late HomeController _homeController;
+  //late HomeController _homeController;
+   late UserItem? userProfile;
 
   @override
-  void initState() {
-    _homeController = HomeController(context: context);
-    _homeController.init();
-    // TODO: implement initState
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    userProfile=HomeController(context: context).userProfile;
   }
 
   @override
   Widget build(BuildContext context) {
-    return _homeController.userProfile != null
+    return userProfile != null
         ? Scaffold(
             backgroundColor: Colors.white,
-            appBar: buildAppbar(_homeController.userProfile!.avatar.toString()),
+            appBar: buildAppbar(userProfile!.avatar.toString()),
             body: BlocBuilder<HomePageBlocs, HomePageStates>(
               builder: (context, state) {
+                if(state.courseItem.isEmpty)
+                  {
+                    HomeController(context: context).init();
+                  }else{
+                  print("...........state.course is not empty.........");
+                }
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20.w),
                   child: CustomScrollView(
@@ -46,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SliverToBoxAdapter(
                         child: homePageText(
-                            "${_homeController.userProfile!.name!}",
+                            "${userProfile!.name!}",
                             color: AppColors.primaryText,
                             top: 3),
                       ),
