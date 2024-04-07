@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../values/colors.dart';
 
-Widget reusbleText(String text,
+Widget reusble_Text(String text,
     {Color color = AppColors.primaryText,
-    int fontSize = 16,
+    double fontSize = 16,
     FontWeight fontWeight = FontWeight.bold}) {
   return Container(
     child: Text(

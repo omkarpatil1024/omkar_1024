@@ -16,7 +16,7 @@ AppBar buildAppBar() {
           height: 12.h,
           child: Image.asset("assets/icons/menu.png"),
         ),
-        reusbleText("Profile"),
+        reusble_Text("Profile"),
         SizedBox(
           width: 24.w,
           height: 24.h,
@@ -78,7 +78,7 @@ Widget buitListView(BuildContext context) {
              SizedBox(
                width: 15.w,
              ),
-             reusbleText(imageInfo.keys.elementAt(index)),
+             reusble_Text(imageInfo.keys.elementAt(index)),
            ],
          ),
        ),

@@ -15,7 +15,7 @@ AppBar buildAppBar() {
     ),
     elevation: 0,
     centerTitle: true,
-    title: reusbleText("Settings"),
+    title: reusble_Text("Settings"),
   );
 }
 

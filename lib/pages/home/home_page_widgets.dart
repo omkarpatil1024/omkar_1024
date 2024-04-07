@@ -173,7 +173,7 @@ Widget menuButtons(String menuText,
         color: bgColor,
         borderRadius: BorderRadius.circular(7.r),
         border: Border.all(color: AppColors.primaryElement)),
-    child: reusbleText(menuText,
+    child: reusble_Text(menuText,
         color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
     padding: EdgeInsets.only(top: 5.h, bottom: 5.h, left: 15.w, right: 15.w),
   );
@@ -189,8 +189,8 @@ Widget menuView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            reusbleText("Choose your course"),
-            reusbleText("See All",
+            reusble_Text("Choose your course"),
+            reusble_Text("See All",
                 color: AppColors.primaryThreeElementText, fontSize: 10)
           ],
         ),
