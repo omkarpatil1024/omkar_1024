@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning/common/values/colors.dart';
 import 'package:ulearning/pages/course/widgets/course_details_widgets.dart';
 
 import '../../common/widgets/base_text.dart';
@@ -25,7 +24,6 @@ class _CourseDetailsState extends State<CourseDetails> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     id = ModalRoute.of(context)!.settings.arguments as Map;
-    print(id.values);
   }
 
   @override
@@ -49,9 +47,13 @@ class _CourseDetailsState extends State<CourseDetails> {
                   15.verticalSpace,
                   reusble_Text("Course Description"),
                   15.verticalSpace,
-                  descriptionText(),
+                  descriptionText("It's difficult to reproduce because I don't have access to your folder structure, so you will have to work at getting the exact path to your zip file correct for you."),
                   15.verticalSpace,
-                  goBuyButton("Go Buy")
+                  goBuyButton("Go Buy"),
+                  15.verticalSpace,
+                  courseSummury(),
+                  buitListView(context),
+                  reusble_Text("Lesson List"),
                 ],
               ),
             )
